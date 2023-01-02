@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:native_demo/widgets/column.dart';
 import 'package:native_demo/widgets/container.dart';
 import 'package:native_demo/widgets/row.dart';
+import 'package:native_demo/widgets/scaffold.dart';
+import 'package:native_demo/widgets/stack.dart';
 import 'package:native_demo/widgets/text.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: myColumn(),
+      home: MyScaffold(),
     );
   }
 }
