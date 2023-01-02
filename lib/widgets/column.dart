@@ -40,19 +40,25 @@ class myColumn extends StatelessWidget {
 
 
                 // para que el container rosa ocupe todo el espacio dispinible usamos expanded
-                // solo sirve en tipo column o row
+                // solo sirve dentro de un widget tipo column o row
                 Expanded(
+
+                  // FLEX ES CUANTO OCUPARA LA EXPANCION DENTRO DE LA VISTA 
+                  flex: 1,
                   child: Container(
                     // el expanded ignora el heigh
-                    height: 100,
+                    
                     color: Colors.pinkAccent,
                     // podemos usar esto o sizebox
                     // margin: EdgeInsets.only(top: 20),
                   ),
                 ),
-                Container(
-                  height: 100,
-                  color: Colors.blueAccent,
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    height: 100,
+                    color: Colors.blueAccent,
+                  ),
                 ),
               ],
             ),
