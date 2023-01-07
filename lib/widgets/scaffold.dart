@@ -9,12 +9,64 @@ class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // la dimencion del container se define segun sus elementos hijos
+      body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: Colors.grey,
+          child: Column(
+            children: const [
+              Expanded(
+                child: Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: TextField(),
+                  ),
+                ),
+              ),
+              Text('jejeaklsjdkajsdkajkdlsadlsad'),
+              SizedBox(
+                height: 50,
+              ),
+            ],
+          )),
+      // me sirve para que no se redimencione el body al abrir el teclado
+      // resizeToAvoidBottomInset: false,
       drawerEnableOpenDragGesture: false,
       endDrawerEnableOpenDragGesture: false,
       onEndDrawerChanged: (isOpen) {
         print(isOpen);
       },
-      endDrawer: Drawer(
+
+      // extiendo el body y queda mas abajo el cetro
+      // extendBody: true,
+
+      // si quiero que el body este por encima del footer y appbar
+      // extendBodyBehindAppBar: true,
+      // puedo pasar cualquier widget
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(
+          Icons.add,
+          size: 30,
+        ),
+        onPressed: () {
+          print('fuego');
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      drawer: Drawer(
         elevation: 20,
         child: Column(
           children: const [
@@ -30,6 +82,19 @@ class MyScaffold extends StatelessWidget {
       ),
       backgroundColor: const Color(0xffafbdc4),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.logout,
+            ),
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.settings,
+              )),
+        ],
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
         ),

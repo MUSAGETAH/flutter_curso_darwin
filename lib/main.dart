@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:native_demo/widgets/column.dart';
 import 'package:native_demo/widgets/container.dart';
 import 'package:native_demo/widgets/row.dart';
+import 'package:native_demo/widgets/safe_area.dart';
 import 'package:native_demo/widgets/scaffold.dart';
 import 'package:native_demo/widgets/stack.dart';
 import 'package:native_demo/widgets/text.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyScaffold(),
+      home: MySafeArea(),
     );
   }
 }
