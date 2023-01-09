@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:native_demo/widgets/list_view_builder.dart';
 
 class MyListView extends StatelessWidget {
   const MyListView({super.key});
@@ -14,8 +15,18 @@ class MyListView extends StatelessWidget {
       body: SafeArea(
         // ESTO DEJA QUE ARRIBA EL CONTENIDO PUEDA PSAR POR ENCIMA DEL STATUS BAR
         // top: false,
-        child: Column(
+        child: ListView(
           children: [
+            IconButton(
+              onPressed: () {
+                // creo una ruta y luego se la paso al navigator
+                final route = MaterialPageRoute(
+                  builder: (_) => MyListViewBuilder(),
+                );
+                Navigator.push(context, route);
+              },
+              icon: const Icon(Icons.login),
+            ),
             SizedBox(
               height: 100,
               child: ListView(
@@ -32,34 +43,31 @@ class MyListView extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              child: ListView(
-                // // desactivar efecto de rsorte
-                // physics: ClampingScrollPhysics(),
+            ListView(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              // // desactivar efecto de rsorte
+              // physics: ClampingScrollPhysics(),
 
-                // HACEMOS QUE EL TECLADO DESAPAREZCA AL HACER SCROLL CUABDO HAY TEXTFIELD ARRIBA
-                // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                children: [
-                  // TextField(),
-                  Text('HELLO'),
-                  Container(
-                    height: 100,
-                    color: Colors.blue,
-                  ),
-                  Container(
-                    height: 600,
-                    color: Colors.red,
-                  ),
-                  Text('HELLO'),
-                  Text('HELLO'),
-                  Text('HELLO'),
-                  Container(
-                    height: 100,
-                    color: Colors.blue,
-                  ),
-                ],
+              // HACEMOS QUE EL TECLADO DESAPAREZCA AL HACER SCROLL CUABDO HAY TEXTFIELD ARRIBA
+              // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              children: List.generate(
+                5,
+                (index) => Container(
+                  margin: EdgeInsets.all(5),
+                  height: 50,
+                  color: Colors.blue,
+                ),
               ),
             ),
+            Container(
+              color: Colors.red,
+              height: 150,
+            ),
+            Container(
+              color: Colors.green,
+              height: 450,
+            )
           ],
         ),
       ),
